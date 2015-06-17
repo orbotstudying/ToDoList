@@ -12,8 +12,11 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath}" method="post">
-  <input name="login" type="text" size="20" />
-  <input name="password" type="password" size="20" />
+  <label for="login">Логин:</label>
+  <input id="login" name="login" type="text" size="20" />
+  <br />
+  <label for="password">Пароль:</label>
+  <input id="password" name="password" type="password" size="20" />
   <br/>
   <input type="submit" value="Войти" />
 </form>
