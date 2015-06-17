@@ -11,6 +11,13 @@
     <title>Вы успешно зашли</title>
 </head>
 <body>
-<p>Поздравляю! Вы залогинились!</p>
+<p>Поздравляю! Вы залогинились!
+Сейчас вас кинет на главную страницу</p>
+<script language="JavaScript" type="text/javascript">
+  function reDirect(){
+    document.location.href="/main";
+  }
+  setTimeout( 'reDirect()', 1000 );
+</script>
 </body>
 </html>

@@ -18,4 +18,14 @@ public class ToDoController {
             return "login";
         }
     }
+
+    @RequestMapping("/join")
+    public String register(ModelMap model) {
+        return "register";
+    }
+
+    @RequestMapping("/main")
+    public String showMainPage(ModelMap model) {
+        return "main";
+    }
 }

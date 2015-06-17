@@ -20,6 +20,6 @@
   <br/>
   <input type="submit" value="Войти" />
 </form>
-
+<a href="/join">Зарегистрироваться</a>
 </body>
 </html>
