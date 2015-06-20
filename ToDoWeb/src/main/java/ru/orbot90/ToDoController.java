@@ -20,7 +20,14 @@ public class ToDoController {
     }
 
     @RequestMapping("/join")
-    public String register(ModelMap model) {
+    public String register(ModelMap model, @RequestParam(value = "username", required = false) String userName,
+                           @RequestParam(value="password", required = false) String password) {
+        if(null != userName && null != password) {
+            switch(authorize.Authorization.register(userName, password)) {
+                case 0:
+                    return "successfullyjoined";
+            }
+        }
         return "register";
     }
 
