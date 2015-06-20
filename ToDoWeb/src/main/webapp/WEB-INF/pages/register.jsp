@@ -32,6 +32,9 @@
   <input type="submit" value="Зарегистрироваться" />
   <br />
   <div id="notcorrect" style="display: none; color: red;">Пароли не совпадают</div>
+  <%if(null != request.getAttribute("errorcode")) {%>
+    <p style="color: red;">Пользователь с именем ${userName} уже существует</p>
+  <%}%>
 </form>
 </body>
 </html>

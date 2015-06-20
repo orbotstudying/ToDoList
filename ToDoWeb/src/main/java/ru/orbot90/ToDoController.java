@@ -26,6 +26,10 @@ public class ToDoController {
             switch(authorize.Authorization.register(userName, password)) {
                 case 0:
                     return "successfullyjoined";
+                case 1:
+                    model.addAttribute("errorcode", 1);
+                    model.addAttribute("userName", userName);
+                    return "register";
             }
         }
         return "register";
