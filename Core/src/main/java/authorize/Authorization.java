@@ -6,7 +6,7 @@ import org.hibernate.exception.ConstraintViolationException;
 import org.jasypt.encryption.StringEncryptor;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import persistence.HibernateUtil;
+import persistence.ToDoListDAO;
 
 import java.util.Iterator;
 import java.util.List;
@@ -19,16 +19,12 @@ public class Authorization {
     private static StringEncryptor encryptor = (StandardPBEStringEncryptor)ctx.getBean("stringEncrypter");
     public static boolean login(String login, String password) {
         boolean logged = false;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
+
         try {
-            List users = session.createQuery("from User u where u.userName = '" + login + "'").list();
-            for (Iterator iterator = users.iterator(); iterator.hasNext(); ) {
-                User loadedUser = (User) iterator.next();
-                if (encryptor.decrypt(loadedUser.getPassword())
-                        .equals(password)) {
-                    logged = true;
-                }
+            User user = ToDoListDAO.getInstance().getUserByLogin(login);
+            if (encryptor.decrypt(user.getPassword())
+                    .equals(password)) {
+                logged = true;
             }
         } catch (NullPointerException e) {
             return false;
@@ -38,13 +34,8 @@ public class Authorization {
 
     public static int register(String login, String password) {
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            Transaction transaction = session.beginTransaction();
-            String passwordEncrypted = encryptor.encrypt(password);
-            User newbie = new User(login, passwordEncrypted);
-            session.save(newbie);
-            transaction.commit();
-            session.close();
+            User newbie = new User(login, encryptor.encrypt(password));
+            ToDoListDAO.getInstance().save(newbie);
         } catch (ConstraintViolationException e) {
             return 1;
         }

@@ -1,10 +1,22 @@
 package authorize;
 
+import contacts.Contact;
+
+import javax.persistence.*;
+
 /**
  * Created by orbot on 20.06.15.
  */
+@Entity
+@Table(name="users")
 public class User {
-    private String userName, password;
+    @Column(name = "user_name", unique = true, nullable = false)
+    private String userName;
+    @Column(name = "user_password", nullable = false)
+    private String password;
+    @Id
+    @Column(name="user_id", nullable = false)
+    @GeneratedValue
     private long id;
 
     public User() {}

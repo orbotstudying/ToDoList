@@ -1,22 +1,32 @@
 package contacts;
 
+import javax.persistence.*;
+
 /**
  * Адрес электронной почты
  */
+@Entity
+@Table(name = "emails")
 public class Email {
     /**
      * Сам адрес
      */
+    @Column(name = "email_address")
     private String address;
 
     /**
      * Основной ли это e-mail?
      */
+    @Column(name = "email_isprimary")
     private boolean primary;
+    @Id @GeneratedValue
+    @Column(name = "email_id")
+    private long id;
 
     /**
      * Тип e-mail'а
      */
+    @Enumerated(EnumType.STRING)
     private ContactType type;
 
     public Email() {

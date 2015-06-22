@@ -15,11 +15,16 @@
         <property name="hibernate.connection.password">
             1234
         </property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
         <property name="use_sql_comments">true</property>
 
-        <mapping resource="User.hbm.xml" />
+
+        <mapping class="authorize.User" />
+        <mapping class="tasks.Task" />
+        <mapping class="tasks.Project" />
+        <mapping class="contacts.Contact" />
+        <mapping class="contacts.Email" />
     </session-factory>
 </hibernate-configuration>
