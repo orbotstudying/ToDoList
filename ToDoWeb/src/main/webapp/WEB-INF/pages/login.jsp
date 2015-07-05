@@ -11,7 +11,7 @@
     <title>Страница входа</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}" method="post">
+<form action="${pageContext.request.contextPath}" method="post" accept-charset="UTF-8">
   <label for="login">Логин:</label>
   <input id="login" name="login" type="text" size="20" />
   <br />

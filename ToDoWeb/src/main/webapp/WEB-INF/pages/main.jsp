@@ -20,9 +20,9 @@
 <body>
 <h1>Добро пожаловать в планировщик задач!</h1>
 <p>Здесь вы можете задать себе <a href="#" onclick="linkClicked()">новое задание</a><br />
-или посмотреть существующий <a href="/tasks">список дел.</a></p>
+или посмотреть существующий <a href="${pageContext.request.contextPath}/tasks">список дел.</a></p>
 <div id="makenewtask" style="display:none;">
-  <form action="/main" method="post">
+  <form action="${pageContext.request.contextPath}/main" method="post" accept-charset="UTF-8">
     <label for="todo">Что сделать:</label>
     <input id="todo" name="todo" type="text" size="40" />
     <input type="submit" value="Создать задание" />

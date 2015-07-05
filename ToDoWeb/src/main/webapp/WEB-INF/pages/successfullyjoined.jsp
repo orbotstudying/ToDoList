@@ -12,6 +12,6 @@
 </head>
 <body>
 <p>Поздравляю! Вы зарегистрировались в системе. <br/>
-Теперь вы можете <a href="/">войти</a></p>
+Теперь вы можете <a href="${pageContext.request.contextPath}/">войти</a></p>
 </body>
 </html>
